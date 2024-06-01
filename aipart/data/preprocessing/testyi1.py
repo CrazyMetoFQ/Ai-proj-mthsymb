@@ -58,7 +58,7 @@ def on_trackbar(val):
     cv2.imshow('Image Processing', concatenated_image)
 
 # Example usage
-image_path = r'C:\Users\alima\OneDrive\Documents\GitHub\Ai-proj-mthsymb\aipart\data\imgtk_sym_synth_raw\img0.jpg'
+image_path = r'C:\Users\alima\OneDrive\Documents\GitHub\Ai-proj-mthsymb\aipart\data\htmlsynthdata_sym_raw\g-l\img_1.png'
 resized_image, gray_image, blurred_image, edges = preprocess_image(image_path)
 
 # Create a window

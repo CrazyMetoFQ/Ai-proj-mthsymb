@@ -5,16 +5,10 @@ import os
 import matplotlib.pyplot
 import numpy as np
 
-def crop_bottom(image, crop_fraction=0.2):
-    """Crop the bottom part of the image by the specified fraction."""
-    height = image.shape[0]
-    crop_height = int(height * crop_fraction)
-    return image[:-crop_height, :]
 
 
-img = cv2.imread(r'C:\Users\alima\OneDrive\Documents\GitHub\Ai-proj-mthsymb\aipart\data\imgtk_eq_synth_raw\img0.jpg')
+img = cv2.imread(r'C:\Users\alima\OneDrive\Documents\GitHub\Ai-proj-mthsymb\aipart\data\htmlsynthdata_sym_raw\P-u\img_1.png')
 
-img = crop_bottom(img, 0.4)
 
 cv2.imshow("hi", img)
 
@@ -34,7 +28,7 @@ cv2.imshow("Dialation Image",imgDialation)
 
 contours, hierarchy = cv2.findContours(imgCanny, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
-cv2.drawContours(img, contours, -1, (0, 255, 0), 3)
+cv2.drawContours(img, contours, -1, (0, 255, 0), 1)
 
 # Step 6: Display the image
 cv2.imshow('Contours', img)

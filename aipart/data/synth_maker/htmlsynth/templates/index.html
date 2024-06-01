@@ -12,16 +12,34 @@
             background-color: black;
         }
 
+
         #stuff{
-            height: auto;
-            width: auto;
-            color: aqua;
+            /* height: fit-content;
+            width: fit-content; */
+            height: 32px;
+            width: 32px;
+            padding: 20px;
+            margin: 20px;
+            background-color: {{bg_color}}; 
+            color:{{text_color}};
+            font-family: {{font_family}};
+            font-style: {{font_style}};
+            font-size: {{font_size}};
+            font-weight: {{font_weight}};
+            font-variant: {{font_variant}};
+            text-align:{{text_align}};
+            transform: rotate({{rotation}}deg);
+
+        }
+
+        button{
+            position: absolute;
+            bottom: 50;
+            margin: 30px;
         }
 
         canvas{
-            
-            background-color: blueviolet !important ;
-        
+            margin: 100px 20px;
         }
 
     </style>
@@ -97,10 +115,18 @@
             await takeshot()
             await delay(100)
 
-            // refresh()
+            refresh()
         }
 
+        async function clicker() {
+            await delay(100)
+
+            document.getElementsByTagName("button")[0].click()
+            await delay(100)
+            
+        }
         
+        // clicker()
 
     </script>
 </body>
