@@ -16,19 +16,22 @@
         #stuff{
             /* height: fit-content;
             width: fit-content; */
-            height: 32px;
-            width: 32px;
-            padding: 20px;
+            height: 64px;
+            width: 64px;
+            padding: 0px;
             margin: 20px;
-            background-color: {{bg_color}}; 
-            color:{{text_color}};
+            background-color: white;
+            color: black;
+            text-align:center;
+            vertical-align: middle;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
             font-family: {{font_family}};
             font-style: {{font_style}};
             font-size: {{font_size}};
             font-weight: {{font_weight}};
-            font-variant: {{font_variant}};
-            text-align:{{text_align}};
-            transform: rotate({{rotation}}deg);
 
         }
 
@@ -100,7 +103,7 @@
                 });
         }
 
-        function downloadImage(data, filename = 'untitled.jpeg') {
+        function downloadImage(data, filename = 'untitled.png') {
             var a = document.createElement('a');
             a.href = data;
             a.download = filename;
@@ -112,7 +115,9 @@
             // f = takeshot();
             // await delay(100)
             // f.onload = refresh();
+
             await takeshot()
+            
             await delay(100)
 
             refresh()

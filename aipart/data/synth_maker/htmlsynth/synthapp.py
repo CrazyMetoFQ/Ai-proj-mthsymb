@@ -3,19 +3,16 @@ import random
 import itertools
 
 
-text_colors = [(random.randint(1,256),random.randint(1,256),random.randint(1,256)) for i in range(50)]
-bg_colors = [(random.randint(1,256),random.randint(1,256),random.randint(1,256)) for i in range(50)]
-font_sizes = range(15,41,5)
-font_weights =  range(100,1001, 100)
-font_familys =  ["serif","sans-serif","cursive","fantasy","monospace"]
+
+
+font_familys =  ["serif","sans-serif","cursive","fantasy","monospace","Perpetua","Monaco","Didot","Brush Script","Copperplate","Comic Sans","Arial"]
 font_styles  =  ["normal","italic"]
-font_variants=  ["normal","small-caps"]
-text_align = ["left","center","right"]
-rotations = [-45,-30,-30,-20,-10,0,0,0,0,0,10,20,30,30,45]
+font_sizes = range(45,54,1)
+font_weights =  range(100,701, 100)
 
-all_things = (text_colors ,bg_colors,font_familys,font_styles, font_sizes,font_weights,font_variants,text_align, rotations)
+all_things = (font_familys,font_styles, font_sizes,font_weights)
 
-totn = 15
+totn = 3
 all_l = [[random.choice(i) for i in all_things] for _ in range(totn)]
 
 # def rnd_l():
@@ -30,7 +27,7 @@ class items_stuff:
   alphabets_U = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
   alphabets_L = alphabets_U.lower()
 
-  nums = "12345567890"
+  nums = "1234567890"
 
   # all_stuff = alphabets_L+alphabets_U+nums
   all_stuff = nums
@@ -97,7 +94,7 @@ sym_text = "Click_me"
 sl = all_l[0]
 cstate = True
 imno = "start"
-
+svnm = "clickme"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -106,6 +103,7 @@ def index():
   global sl
   global cstate
   global imno
+  global svnm
   
   if request.method == "POST":
     
@@ -113,30 +111,29 @@ def index():
     print(item)
 
     if item == False:
-      print("doing it")
       cstate = False
     else:
       sym_text,imno,sl = item
-
-  print(cstate)
+      
+      svnm = sym_text
+      if sym_text.isnumeric():
+        svnm += "-n"
+      if sym_text.isupper():
+        svnm += "-u"
+      if sym_text.islower():
+        svnm += "-l"
+  
   if cstate == True:
-    print("nigga")
     return render_template("index.html",
                           sym_text=sym_text,
-                          save_name=f"img_{sym_text}_{imno}.png",
-                          text_color= f"rgb{sl[0]}",
-                          bg_color= f"rgb{sl[1]}",
-                          font_family =  sl[2] ,
-                          font_style  =  sl[3],
-                          font_size   =  f"{sl[4]}px" ,
-                          font_weight =  sl[5],
-                          font_variant=  sl[6],
-                          text_align = sl[7],
-                          rotation = sl[8]
+                          save_name=f"img_{svnm}_{imno}.png",
+                          font_family =  sl[0] ,
+                          font_style  =  sl[1],
+                          font_size   =  f"{sl[2]}px" ,
+                          font_weight =  sl[3],
                           )
   else:
 
-    print("wtf")
     return render_template("over.html")
 
 if __name__ == "__main__":
